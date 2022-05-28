@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 
 let createKampagne = (req, res) => {
     const body = req.body;
-    console.log('body', body);
     if (!body) {
         return res.status(400).json({
             success: false,
@@ -12,7 +11,6 @@ let createKampagne = (req, res) => {
     }
 
     const kampagne = new Kampagne(body);
-    console.log('kampagne body', kampagne);
 
     if (!kampagne) {
         return res.status(400).json({ success: false, error: 'err' });
