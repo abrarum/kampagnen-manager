@@ -2,7 +2,7 @@
 
 ## Description
 
-A simple campaign manager with a form and a datatable.
+A simple campaign manager with a form to add campaign and datatable to view campaigns with extra features of individual sorting and filtering table with keywords (for all columns).
 
 ## Tech stack
 
