@@ -6,8 +6,8 @@ const Kampagne = new Schema(
         kampagnenname: String,
         kunde: String,
         status: String,
-        start: { type: Date, default: Date.now() },
-        end: { type: Date, default: Date.now() },
+        start: String,
+        end: String,
     },
     { timestamps: true }
 );

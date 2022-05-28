@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useCallback, useEffect, useState } from 'react';
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -11,6 +11,8 @@ import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
+import { fetchKampagnen } from './api/index.jsx';
+
 
 // Components
 import DataTable from "./components/DataTable";
@@ -56,6 +58,24 @@ const theme = createTheme({
 });
 
 export default function HideAppBar(props: Props) {
+  const [kampagnen, setKampagnen] = useState([]);
+  const [isUpdate, setIsUpdate] = useState(false);
+  useEffect(() => {
+    try {
+        fetchKampagnen().then(
+            (success) => {
+              console.log('success', success.data.data);
+              setKampagnen(success.data.data);
+            },
+            (reject) => {
+                console.log('reject', reject);
+            }
+        );
+    } catch (err) {
+        console.log('error', err);
+    }
+  }, [isUpdate]);
+
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
@@ -82,10 +102,10 @@ export default function HideAppBar(props: Props) {
         <Container sx={{ my: 2 }}>
           <div className="dataGridHeader">
             <h2>Alle Kampagnen</h2>
-            <BasicModal />
+            <BasicModal handleKampagnenUpdate={() => setIsUpdate(true)} />
           </div>
           <Paper elevation={1} className="dataTable">
-            <DataTable />
+            <DataTable kampagnen={kampagnen} />
           </Paper>
         </Container>
       </ThemeProvider>
