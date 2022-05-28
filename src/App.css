@@ -1,0 +1,53 @@
+[aria-label="Export"] {
+  display: none;
+}
+
+.dataGridHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.kampagnenForm {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-auto-rows: minmax(100px, auto);
+  grid-template-areas:
+    "fh fh"
+    "ff ff"
+    ". fb";
+}
+
+.kampagnenForm label {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 20px;
+}
+
+.formDateTime {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 2fr;
+}
+
+.formHeader {
+  grid-area: fh;
+  text-align: center;
+}
+
+.formFields {
+  display: grid;
+  grid-area: ff;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 20px;
+}
+
+.formButtons {
+  grid-area: fb;
+  align-self: center;
+  text-align: end;
+}
+
+.formButtons button:nth-child(1) {
+  margin-right: 10px;
+}
